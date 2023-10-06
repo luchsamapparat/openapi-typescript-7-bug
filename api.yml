@@ -1,0 +1,50 @@
+openapi: "3.0.1"
+
+info:
+  title: openapi-typescript-7
+  version: 1.0.0
+
+paths:
+  /:
+    get:
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      required:
+        - id
+        - name
+
+    PurchasableProduct:
+      type: object
+      properties:
+        price:
+          $ref: '#/components/schemas/Price'
+      required:
+        - price
+      allOf:
+        - $ref: '#/components/schemas/Product'
+
+    Price:
+      type: object
+      properties:
+        value:
+          type: number
+        currency:
+          type: string
+      required:
+        - value
+        - currency
