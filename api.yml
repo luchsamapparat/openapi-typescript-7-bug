@@ -29,14 +29,14 @@ components:
         - name
 
     PurchasableProduct:
-      type: object
-      properties:
-        price:
-          $ref: '#/components/schemas/Price'
-      required:
-        - price
       allOf:
         - $ref: '#/components/schemas/Product'
+        - type: object
+          properties:
+            price:
+              $ref: '#/components/schemas/Price'
+          required:
+            - price
 
     Price:
       type: object

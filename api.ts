@@ -47,9 +47,9 @@ export interface components {
             id: string;
             name: string;
         };
-        PurchasableProduct: {
+        PurchasableProduct: components["schemas"]["Product"] & {
             price: components["schemas"]["Price"];
-        } & WithRequired<components["schemas"]["Product"], "price">;
+        };
         Price: {
             value: number;
             currency: string;
@@ -62,7 +62,4 @@ export interface components {
     pathItems: never;
 }
 export type $defs = Record<string, never>;
-type WithRequired<T, K extends keyof T> = T & {
-    [P in K]-?: T[P];
-};
 export type operations = Record<string, never>;
